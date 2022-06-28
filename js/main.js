@@ -1,4 +1,5 @@
 var ellist = document.querySelector(".list")
+
 var pokemons = [
   {
     id: 1,
@@ -3437,12 +3438,12 @@ var pokemons = [
         num: '147',
         name: 'Dratini',
       },
-
+      
       {
         num: '148',
         name: 'Dragonair',
       },
-
+      
     ],
   },
   {
@@ -3480,80 +3481,103 @@ var pokemons = [
 ];
 
 
-for (var i = 0; i < pokemons.length; i++){
-  var newitam = document.createElement("li")
-  var elimg = document.createElement("img")
-  var elid = document.createElement("span")
-  var elnum = document.createElement("span")
-  var eltype = document.createElement("span")
-  var elheight = document.createElement("span")
-  var elweight = document.createElement("span")
-  var elcan  = document.createElement("span")
-  var elegg = document.createElement("span")
-  var elegg = document.createElement("span")
-  var elspawn = document.createElement("span")
-  var elavg = document.createElement("span")
-  var eltime = document.createElement("span")
-  var multiplier = document.createElement("span")
-  var weaknesse = document.createElement("span")
-  var evolution = document.createElement("span")
-  var nextevo = document.createElement("span")
-  if(pokemons[i].prev_evolution){
-    var elnu = pokemons[i].prev_evolution[0].num
-    var elevo = pokemons[i].prev_evolution[0].name
+function DOM (array, node ){
+  for (poc of array){ 
+    var newitam = document.createElement("li")
+    var elimg = document.createElement("img")
+    var elid = document.createElement("span")
+    var elnum = document.createElement("span")
+    var eltype = document.createElement("span")
+    var elheight = document.createElement("span")
+    var elweight = document.createElement("span")
+    var elcan  = document.createElement("span")
+    var elegg = document.createElement("span")
+    var elegg = document.createElement("span")
+    var elspawn = document.createElement("span")
+    var elavg = document.createElement("span")
+    var eltime = document.createElement("span")
+    var multiplier = document.createElement("span")
+    var weaknesse = document.createElement("span")
+    var evolution = document.createElement("span")
+    var nextevo = document.createElement("span")
+    if(poc.prev_evolution){
+      var elnu = poc.prev_evolution.num
+      var elevo = poc.prev_evolution.name
+    }
+    
+    
+    if(poc.next_evolution){
+      var elnnum = poc.next_evolution.num
+      var elnname = poc.next_evolution.name
+    }
+    
+    newitam.setAttribute ('class', 'iteam')
+    node.appendChild(newitam)
+    newitam.appendChild(elimg)
+    newitam.appendChild(elid)
+    newitam.appendChild(elnum)
+    newitam.appendChild(eltype)
+    newitam.appendChild(elheight)
+    newitam.appendChild(elweight)
+    newitam.appendChild(elcan)
+    newitam.appendChild(elegg)
+    newitam.appendChild(elspawn)
+    newitam.appendChild(elavg)
+    newitam.appendChild(eltime)
+    newitam.appendChild(multiplier)
+    newitam.appendChild(weaknesse)
+    newitam.appendChild(evolution)
+    newitam.appendChild(nextevo)
+    elid.textContent = `id: ${poc.id}`;
+    elnum.textContent =`num: ${poc.num}`
+    elimg.src = `${poc.img}`
+    elimg.setAttribute('alt', 'images-pocemens')
+    elimg.setAttribute('class', 'img')
+    elimg.setAttribute('with', '120')
+    elimg.setAttribute('height', '120')
+    eltype.textContent =`type: ${poc.type} `
+    elheight.textContent = `height: ${poc.height}`
+    elweight.textContent = `weight: ${poc.weight} `
+    elcan.textContent = `candy: ${poc.candy} `
+    elegg.textContent = `egg: ${poc.egg} `
+    elspawn.textContent = `spawn_chance: ${poc.spawn_chance} `
+    elavg.textContent = `avg_spawns: ${poc.avg_spawns} `
+    eltime.textContent = `spawn_time: ${poc.spawn_time} `
+    multiplier.textContent = `multipliers: ${poc.multipliers} `
+    weaknesse.textContent = `weaknesses: ${poc.weaknesses} `
+    evolution.textContent = `prev_evolution: ${"num:"} ${elnu} ${"name:"} ${elevo}`
+    nextevo.textContent = `next_evolution: ${"num:"} ${elnnum} ${"name:"} ${elnname}`
+    
   }
-  
-  if(pokemons[i].next_evolution){
-    var elnnum = pokemons[i].next_evolution[0].num
-    var elnname = pokemons[i].next_evolution[0].name
-  }
-
-  newitam.setAttribute ('class', 'iteam')
-  ellist.appendChild(newitam)
-  newitam.appendChild(elimg)
-  newitam.appendChild(elid)
-  newitam.appendChild(elnum)
-  newitam.appendChild(eltype)
-  newitam.appendChild(elheight)
-  newitam.appendChild(elweight)
-  newitam.appendChild(elcan)
-  newitam.appendChild(elegg)
-  newitam.appendChild(elspawn)
-  newitam.appendChild(elavg)
-  newitam.appendChild(eltime)
-  newitam.appendChild(multiplier)
-  newitam.appendChild(weaknesse)
-  newitam.appendChild(evolution)
-  newitam.appendChild(nextevo)
-
-  
-
-  
-  
-  
-  
-  elid.textContent = `id: ${pokemons[i].id}`;
-  elnum.textContent =`num: ${pokemons[i].num}`
-  elimg.src = `${pokemons[i].img}`
-  elimg.setAttribute('alt', 'images-pocemens')
-  elimg.setAttribute('class', 'img')
-  elimg.setAttribute('with', '120')
-  elimg.setAttribute('height', '120')
-  eltype.textContent =`type: ${pokemons[i].type} `
-  elheight.textContent = `height: ${pokemons[i].height}`
-  elweight.textContent = `weight: ${pokemons[i].weight} `
-  elcan.textContent = `candy: ${pokemons[i].candy} `
-  elegg.textContent = `egg: ${pokemons[i].egg} `
-  elspawn.textContent = `spawn_chance: ${pokemons[i].spawn_chance} `
-  elavg.textContent = `avg_spawns: ${pokemons[i].avg_spawns} `
-  eltime.textContent = `spawn_time: ${pokemons[i].spawn_time} `
-  multiplier.textContent = `multipliers: ${pokemons[i].multipliers} `
-  weaknesse.textContent = `weaknesses: ${pokemons[i].weaknesses} `
-  evolution.textContent = `prev_evolution: ${"num:"} ${elnu} ${"name:"} ${elevo}`
-  nextevo.textContent = `next_evolution: ${"num:"} ${elnnum} ${"name:"} ${elnname}`
-
   
 }
+
+
+
+DOM(pokemons, ellist)
+
+
+const elSelect = document.querySelector('.selse');
+
+let result = [];
+
+elSelect.addEventListener('change', function () {
+
+	ellist.innerHTML = '';
+	result = [];
+
+	let selectValue = elSelect.value;
+	pokemons.forEach((poc) => {
+		if (poc.type.includes(selectValue)) {
+			result.push(poc);
+		}
+	});
+
+
+	DOM(result, ellist);
+
+});
+
 
 
 
